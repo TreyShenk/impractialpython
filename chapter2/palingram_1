@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Dec 27 11:36:45 2020
+
+@author: trey
+"""
+
+def main():
+    import load_dictionary as ld
+    word_list = ld.load('words_alpha.txt')
+    
+    
+if __name__ == "__main__":
+    main()

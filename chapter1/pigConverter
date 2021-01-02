@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Simple program to convert a string of words to pig latin. The input should be
+entirely letters (no puncuation). Very simple.
+12/10/2020
+"""
+
+def pigRecursion(this_word):
+    """
+    Given a string that starts with a consonant, this function will convert it
+    to pig latin recursively.
+    """
+    
+    #If the leading character is a vowel, tack on an "ay" at the end and 
+    #return the result.
+    #If the leading character is not a vowel, move it to the end, and repeat
+    #the process.
+    if isvowel(this_word[0]):
+        return this_word+'ay'
+    else: 
+        return pigRecursion(this_word[1:]+this_word[0])
+
+def isvowel(thisLetter):
+    """
+    Tests to see if the current letter is a vowel.
+    
+    Improvement List:
+        Make it check to see if only a single character were entered.
+    """
+    vowels = {"a", "e", "i", "o", "u"}
+    return {thisLetter}.issubset(vowels)
+
+def main():
+    to_pig = input("Input phrase to be pig latinified: \n")
+    to_pig = to_pig.lower().split()
+    out = ""
+    for this_word in to_pig[:]:
+        if isvowel(this_word[0]):
+            out = out + this_word+" "
+        else :
+            out = out + pigRecursion(this_word)+" "
+    print(out)
+
+if __name__ == "__main__":
+    main()
