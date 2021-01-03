@@ -29,6 +29,7 @@ class AnagramTree:
         self.children = []
         self.tree_level = 0
         self.dict_ind = 0
+        self.anagram_list = []
     
     def find_children(self):
         #self.print_tree()
@@ -43,6 +44,7 @@ class AnagramTree:
                     child.find_children()
                 else:
                     child.print_anagram()
+                    child.store_anagram('')
         else:
             self.parent.delete_branch(self)
     
@@ -52,7 +54,12 @@ class AnagramTree:
         else:
             self.children.remove(child)
             #print("Delete on level {}, word is {}, remaining {}".format(child.tree_level, child.word, child.remaining))
-    
+    def store_anagram(self, current_phrase):
+        if self.tree_level>0:
+            current_phrase = current_phrase +' '+ self.word
+            self.parent.store_anagram(current_phrase)
+        else:
+            self.anagram_list.append(current_phrase)
     def print_anagram(self):
         print(self.word, end=" ")
         if self.tree_level>1:
