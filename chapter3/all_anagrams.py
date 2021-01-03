@@ -16,7 +16,7 @@ structure, so that the steps after deciding an input would be
 This process builds up an anagram tree.
 
 One important design choice was that the dictionary for step 2 only includes 
-the chosen word and the words following. Means ensures that no two branches 
+the chosen word and the words following. This ensures that no two branches 
 will have the same words in different order. If this were not the case, the 
 number of possibilities would be much larger.
         
